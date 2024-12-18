@@ -38,7 +38,7 @@ class SqlDmlProceduresApplicationTests {
 
 	@DisplayName("Biyografi türünü tür tablosuna ekleyiniz.")
 	@Test
-	void findTurTest(){
+	void findTurTest() {
 		Tur tur = turRepository.findByAd("Biyografi");
 		assertNotNull(tur);
 		assertEquals(tur.getAd(), "Biyografi");
@@ -46,7 +46,7 @@ class SqlDmlProceduresApplicationTests {
 
 	@DisplayName("Nurettin Belek isimli yazarı yazar tablosuna ekleyiniz.")
 	@Test
-	void findYazarTest(){
+	void findYazarTest() {
 		Yazar yazar = yazarRepository.findByAd("Nurettin");
 		assertNotNull(yazar);
 		assertEquals(yazar.getAd(), "Nurettin");
@@ -55,7 +55,7 @@ class SqlDmlProceduresApplicationTests {
 
 	@DisplayName("10B sınıfındaki öğrencileri 10C sınıfına geçirin.")
 	@Test
-	void findOgrenciBySinifTest(){
+	void findOgrenciBySinifTest() {
 		List<Ogrenci> ogrenciList = ogrenciRepository.findBySinif("10C");
 		assertNotNull(ogrenciList);
 		assertEquals(ogrenciList.size(), 2);
@@ -63,22 +63,22 @@ class SqlDmlProceduresApplicationTests {
 
 	@DisplayName("Tüm kitapların puanını 5 puan arttırınız.")
 	@Test
-	void findBookPointTest(){
+	void findBookPointTest() {
 		List<Kitap> kitapList = kitapRepository.findAll();
 		assertEquals(kitapList.get(0).getPuan(), 27);
 	}
 
 
-    @DisplayName("Adı Mehmet olan tüm yazarları silin.")
+	@DisplayName("Adı Mehmet olan tüm yazarları silin.")
 	@Test
-	void findNullYazarTest(){
+	void findNullYazarTest() {
 		Yazar yazar = yazarRepository.findByAd("Mehmet");
 		assertNull(yazar);
 	}
 
 	@DisplayName("Kişisel Gelişim isimli bir tür oluşturun.")
 	@Test
-	void findNewTurTest(){
+	void findNewTurTest() {
 		Tur tur = turRepository.findByAd("Kişisel Gelişim");
 		assertNotNull(tur);
 		assertEquals(tur.getAd(), "Kişisel Gelişim");
@@ -86,7 +86,7 @@ class SqlDmlProceduresApplicationTests {
 
 	@DisplayName("'Benim Üniversitelerim' isimli kitabın türünü 'Kişisel Gelişim' yapın.")
 	@Test
-	void checkBookTurTest(){
+	void checkBookTurTest() {
 		Tur tur = turRepository.findByAd("Kişisel Gelişim");
 		Kitap kitap = kitapRepository.findByAd("Benim Üniversitelerim");
 		assertEquals(tur.getTurno(), kitap.getTurno());
@@ -94,7 +94,7 @@ class SqlDmlProceduresApplicationTests {
 
 	@DisplayName("Öğrenci tablosunu kontrol etmek amaçlı tüm öğrencileri görüntüleyen 'ogrencilistesi' adında bir fonksiyon oluşturun.")
 	@Test
-	void callOgrenciListesiTest(){
+	void callOgrenciListesiTest() {
 		List<Ogrenci> ogrenciList = ogrenciRepository.findAllOgrenci();
 		assertNotNull(ogrenciList);
 		assertEquals(ogrenciList.size(), 10);
@@ -102,7 +102,7 @@ class SqlDmlProceduresApplicationTests {
 
 	@DisplayName("kitap tablosuna yeni kitap eklemek için 'ekle' adında bir prosedür oluşturun.")
 	@Test
-	void callEkleTest(){
+	void callEkleTest() {
 		kitapRepository.addNewKitap("Alice in the Wonderland", 100, 1, 1);
 		Kitap kitap = kitapRepository.findByAd("Alice in the Wonderland");
 		assertNotNull(kitap);
@@ -111,9 +111,9 @@ class SqlDmlProceduresApplicationTests {
 
 	@DisplayName("Öğrenci noya göre öğrenci silebilmeyi sağlayan 'sil' adında bir prosedür oluşturun.")
 	@Test
-	void removeOgrenciTest(){
+	void removeOgrenciTest() {
 		Ogrenci ogrenci = new Ogrenci();
-	    ogrenci.setAd("Test");
+		ogrenci.setAd("Test");
 		ogrenci.setSoyad("Test");
 		ogrenci.setCinsiyet("E");
 		ogrenci.setPuan(50);
